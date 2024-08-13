@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>GameLauncher.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GameLauncher.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">GameLauncher </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">MonsterManager manager </span><span class="s2">= </span><span class="s0">new </span><span class="s1">MonsterManager</span><span class="s2">();</span>
+        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+        <span class="s1">String choice</span><span class="s2">;</span>
+
+        <span class="s0">do </span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Main Menu&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;1. Create Monster&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;2. View Monsters&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;3. Breed Monsters&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;4. Save Game&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;5. Load Game&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;6. Exit&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter your choice: &quot;</span><span class="s2">);</span>
+            <span class="s1">choice </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+
+            <span class="s0">switch </span><span class="s2">(</span><span class="s1">choice</span><span class="s2">) {</span>
+                <span class="s0">case </span><span class="s3">&quot;1&quot;</span><span class="s2">:</span>
+                    <span class="s1">createMonster</span><span class="s2">(</span><span class="s1">manager</span><span class="s2">, </span><span class="s1">scanner</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;2&quot;</span><span class="s2">:</span>
+                    <span class="s1">manager</span><span class="s2">.</span><span class="s1">displayMonsters</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;3&quot;</span><span class="s2">:</span>
+                    <span class="s1">breedMonsters</span><span class="s2">(</span><span class="s1">manager</span><span class="s2">, </span><span class="s1">scanner</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;4&quot;</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter filename to save: &quot;</span><span class="s2">);</span>
+                    <span class="s1">String saveFilename </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s1">manager</span><span class="s2">.</span><span class="s1">saveGame</span><span class="s2">(</span><span class="s1">saveFilename</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;5&quot;</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter filename to load: &quot;</span><span class="s2">);</span>
+                    <span class="s1">String loadFilename </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+                    <span class="s1">manager</span><span class="s2">.</span><span class="s1">loadGame</span><span class="s2">(</span><span class="s1">loadFilename</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s3">&quot;6&quot;</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Exiting the game...&quot;</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">default</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Invalid choice, please try again.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">while </span><span class="s2">(!</span><span class="s1">choice</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s3">&quot;6&quot;</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private static void </span><span class="s1">createMonster</span><span class="s2">(</span><span class="s1">MonsterManager manager</span><span class="s2">, </span><span class="s1">Scanner scanner</span><span class="s2">) {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter monster name: &quot;</span><span class="s2">);</span>
+        <span class="s1">String name </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter monster color: &quot;</span><span class="s2">);</span>
+        <span class="s1">String color </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter monster strength: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">strength </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter monster speed: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">speed </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">());</span>
+
+        <span class="s1">Monster monster </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Monster</span><span class="s2">(</span><span class="s1">name</span><span class="s2">, </span><span class="s1">color</span><span class="s2">, </span><span class="s1">strength</span><span class="s2">, </span><span class="s1">speed</span><span class="s2">) {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">performSpecialAbility</span><span class="s2">() {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; performs a special ability!&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">};</span>
+        <span class="s1">manager</span><span class="s2">.</span><span class="s1">addMonster</span><span class="s2">(</span><span class="s1">monster</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Monster created: &quot; </span><span class="s2">+ </span><span class="s1">name</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private static void </span><span class="s1">breedMonsters</span><span class="s2">(</span><span class="s1">MonsterManager manager</span><span class="s2">, </span><span class="s1">Scanner scanner</span><span class="s2">) {</span>
+        <span class="s1">manager</span><span class="s2">.</span><span class="s1">displayMonsters</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter the number of the first monster: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">index1 </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter the number of the second monster: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">index2 </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">());</span>
+
+        <span class="s1">manager</span><span class="s2">.</span><span class="s1">breedMonsters</span><span class="s2">(</span><span class="s1">index1</span><span class="s2">, </span><span class="s1">index2</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

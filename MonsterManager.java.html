@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>MonsterManager.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MonsterManager.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+
+<span class="s0">class </span><span class="s1">MonsterManager </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Monster</span><span class="s2">&gt; </span><span class="s1">monsters </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+
+    <span class="s0">public void </span><span class="s1">addMonster</span><span class="s2">(</span><span class="s1">Monster m</span><span class="s2">) {</span>
+        <span class="s1">monsters</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">m</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">breedMonsters</span><span class="s2">(</span><span class="s0">int </span><span class="s1">index1</span><span class="s2">, </span><span class="s0">int </span><span class="s1">index2</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">index1 </span><span class="s2">&lt; </span><span class="s3">0 </span><span class="s2">|| </span><span class="s1">index2 </span><span class="s2">&lt; </span><span class="s3">0 </span><span class="s2">|| </span><span class="s1">index1 </span><span class="s2">&gt;= </span><span class="s1">monsters</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() || </span><span class="s1">index2 </span><span class="s2">&gt;= </span><span class="s1">monsters</span><span class="s2">.</span><span class="s1">size</span><span class="s2">()) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Invalid monster selection.&quot;</span><span class="s2">);</span>
+            <span class="s0">return</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s1">Monster parent1 </span><span class="s2">= </span><span class="s1">monsters</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">index1</span><span class="s2">);</span>
+        <span class="s1">Monster parent2 </span><span class="s2">= </span><span class="s1">monsters</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">index2</span><span class="s2">);</span>
+
+        <span class="s5">// Simple breeding logic (averaging strengths and speeds)</span>
+        <span class="s1">String newName </span><span class="s2">= </span><span class="s1">parent1</span><span class="s2">.</span><span class="s1">name </span><span class="s2">+ </span><span class="s4">&quot;-&quot; </span><span class="s2">+ </span><span class="s1">parent2</span><span class="s2">.</span><span class="s1">name</span><span class="s2">;</span>
+        <span class="s1">String newColor </span><span class="s2">= </span><span class="s4">&quot;Mixed&quot;</span><span class="s2">;</span>
+        <span class="s0">int </span><span class="s1">newStrength </span><span class="s2">= (</span><span class="s1">parent1</span><span class="s2">.</span><span class="s1">strength </span><span class="s2">+ </span><span class="s1">parent2</span><span class="s2">.</span><span class="s1">strength</span><span class="s2">) / </span><span class="s3">2</span><span class="s2">;</span>
+        <span class="s0">int </span><span class="s1">newSpeed </span><span class="s2">= (</span><span class="s1">parent1</span><span class="s2">.</span><span class="s1">speed </span><span class="s2">+ </span><span class="s1">parent2</span><span class="s2">.</span><span class="s1">speed</span><span class="s2">) / </span><span class="s3">2</span><span class="s2">;</span>
+
+        <span class="s1">Monster offspring </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Monster</span><span class="s2">(</span><span class="s1">newName</span><span class="s2">, </span><span class="s1">newColor</span><span class="s2">, </span><span class="s1">newStrength</span><span class="s2">, </span><span class="s1">newSpeed</span><span class="s2">) {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">performSpecialAbility</span><span class="s2">() {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s4">&quot; performs a unique ability inherited from both parents!&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">};</span>
+        <span class="s1">addMonster</span><span class="s2">(</span><span class="s1">offspring</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;New monster created: &quot; </span><span class="s2">+ </span><span class="s1">offspring</span><span class="s2">.</span><span class="s1">name</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">saveGame</span><span class="s2">(</span><span class="s1">String filename</span><span class="s2">) {</span>
+        <span class="s1">Monster</span><span class="s2">.</span><span class="s1">FileManager</span><span class="s2">.</span><span class="s1">saveMonsters</span><span class="s2">(</span><span class="s1">monsters</span><span class="s2">, </span><span class="s1">filename</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">loadGame</span><span class="s2">(</span><span class="s1">String filename</span><span class="s2">) {</span>
+        <span class="s1">monsters </span><span class="s2">= </span><span class="s1">Monster</span><span class="s2">.</span><span class="s1">FileManager</span><span class="s2">.</span><span class="s1">loadMonsters</span><span class="s2">(</span><span class="s1">filename</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">displayMonsters</span><span class="s2">(</span><span class="s0">boolean </span><span class="s1">detailed</span><span class="s2">) {</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Monster m </span><span class="s2">: </span><span class="s1">monsters</span><span class="s2">) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">detailed</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">m</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">());</span>
+            <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">m</span><span class="s2">.</span><span class="s1">name</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
